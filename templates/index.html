@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Crop Disease Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+    <h2 class="logo">🌿 CropAI</h2>
+
+    <ul class="nav-links">
+      
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h1>🌿 Crop Disease Detection</h1>
+
+    <!-- Upload -->
+    <div class="card">
+        <h3>Upload Leaf Image</h3>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <!-- Result -->
+    {% if disease %}
+    <div class="card">
+        <h2>Result</h2>
+        <p><b>Disease:</b> {{ disease }}</p>
+        <p><b>Confidence:</b> {{ confidence }}%</p>
+        <p><b>Cause:</b> {{ cause }}</p>
+        <p><b>Solution:</b> {{ solution }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Chatbot -->
+    <div class="card" id="chatbox">
+        <h3>💬 Ask About Disease</h3>
+
+        <input type="text" id="userInput" placeholder="Type your question...">
+        <br>
+        <button onclick="startVoice()">🎤mic</button>
+        <button onclick="sendMessage()">Send</button>
+        
+
+        <p id="botResponse"></p>
+    </div>
+
+</div>
+
+<script>
+function sendMessage() {
+    let msg = document.getElementById("userInput").value;
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "message=" + msg
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("botResponse").innerText = data.response;
+    });
+}
+
+// 🎤 Voice Input
+function startVoice() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-IN";
+
+    recognition.onresult = function(event) {
+        document.getElementById("userInput").value = event.results[0][0].transcript;
+    };
+
+    recognition.start();
+}
+</script>
+
+</body>
+</html>

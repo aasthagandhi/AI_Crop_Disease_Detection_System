@@ -1,0 +1,129 @@
+ body {
+        font-family: Arial;
+        background: #07f6a6;
+        text-align: center;
+        }
+
+.container {
+        width: 90%;
+        height: 90%;
+        margin: auto;
+        padding: 20px;
+        background-color: aquamarine;
+        }
+h3{
+    border: 2px solid;
+    padding: 10px;
+
+        }
+
+h1 {
+    color: #2e7d32;
+    }
+
+.card {
+        background: white;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        background: #2e7d32;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+input {
+        padding: 10px;
+        width: 60%;
+    }
+
+#chatbox {
+        margin-top: 20px;
+    }
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2e7d32;
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo {
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}  
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 📱 Mobile View */
+@media (max-width: 768px) {
+
+    .container {
+        width: 90%;
+    }
+     
+.navbar {
+        display: flex;
+        justify-content: space-between;  
+        align-items: center;
+        flex-direction: row;             
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;             
+        gap: 10px;
+        margin: 0;
+    }
+
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.card {
+    margin: 10px 0;
+}
+
+h1 {
+    font-size: 22px;
+}
