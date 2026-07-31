@@ -22,8 +22,36 @@ def contact():
 
 
 # ✅ Prediction route
+
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
+    try:
+        # Get image file
+        file = request.files['image']
+
+        # Convert file to image
+        img = cv2.imdecode(
+            np.frombuffer(file.read(), np.uint8),
+            cv2.IMREAD_COLOR
+        )
+
+        # Predict
+        disease, confidence, cause, solution, prevention = predict_disease(img)
+
+        # Show result
+        return render_template(
+            "index.html",
+            disease=disease,
+            confidence=round(confidence * 100, 2),
+            cause=cause,
+            solution=solution,
+            prevention=prevention
+        )
+
+    except Exception as e:
+        return f"Error: {str(e)}"
 
     # 1. Get image file
     file = request.files['image']
