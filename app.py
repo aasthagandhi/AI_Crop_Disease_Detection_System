@@ -32,6 +32,7 @@ def contact():
 # Prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
+    print("=====PREDICT ROUTE HIT =====",flush=True)
     try:
         if 'image' not in request.files:
             return "No image uploaded."
