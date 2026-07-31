@@ -3,7 +3,10 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load trained model
-model = load_model("model/aasu_crop_model.keras")
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model", "aasu_crop_model.keras")
+model = load_model(MODEL_PATH)
 
 
 # Class Names
