@@ -15,7 +15,12 @@ model = load_model("model/aasu_crop_model.keras")
 
 import os
 
-class_names = sorted(os.listdir("C:/Users/rishu/desktop/crop-disease-app/dataset/crop_disease/PlantVillage"))
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PLANT_VILLAGE_PATH = os.path.join(BASE_DIR, "dataset", "crop_disease", "PlantVillage")
+
+class_names = sorted(os.listdir(PLANT_VILLAGE_PATH))
 
 # ✅ 3. Disease info (can expand later)
 disease_info = {
