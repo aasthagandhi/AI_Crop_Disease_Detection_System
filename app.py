@@ -30,9 +30,12 @@ def predict():
 
     # 2. Convert file to image
     img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
+    print("Image received")
 
     # 3. Predict
     disease, confidence, cause, solution, prevention = predict_disease(img)
+    print("Prediction successful")
+
     # 4. Return result
     return render_template(
         "index.html",
