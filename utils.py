@@ -17,10 +17,12 @@ import os
 
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PLANT_VILLAGE_PATH = os.path.join(BASE_DIR, "dataset", "crop_disease", "PlantVillage")
-
-class_names = sorted(os.listdir(PLANT_VILLAGE_PATH))
+# Class names (same order as model training)
+class_names = [
+    "Potato___Early_blight",
+    "Tomato_Early_blight",
+    "Tomato_Late_blight"
+]
 
 # ✅ 3. Disease info (can expand later)
 disease_info = {
@@ -32,7 +34,7 @@ disease_info = {
         "cause": "Fungal infection due to humidity",
         "solution": "Use chlorothalonil spray"
     },
-    "Potato__Early_blight": {
+    "Potato___Early_blight": {
         "cause": "Fungal disease",
         "solution": "Remove affected leaves and apply fungicide"
     }
