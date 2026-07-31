@@ -32,15 +32,15 @@ def predict():
     img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
 
     # 3. Predict
-    disease, confidence, cause, solution = predict_disease(img)
-
+    disease, confidence, cause, solution, prevention = predict_disease(img)
     # 4. Return result
     return render_template(
         "index.html",
         disease=disease,
         confidence=round(confidence * 100, 2),
         cause=cause,
-        solution=solution
+        solution=solution,
+        prevention=prevention
     )
 
 
